@@ -1,0 +1,28 @@
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\Model.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\Model.pdb
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.Properties.Resources.resources
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\Model.dll
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\Model.pdb
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.Properties.Resources.resources
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.GenerateResource.Cache
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

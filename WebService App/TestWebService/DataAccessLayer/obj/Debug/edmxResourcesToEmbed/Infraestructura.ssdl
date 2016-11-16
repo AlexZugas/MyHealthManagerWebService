@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Container">
+    <Key>
+      <PropertyRef Name="ContainerId" />
+    </Key>
+    <Property Name="ContainerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Diet">
+    <Key>
+      <PropertyRef Name="DietId" />
+    </Key>
+    <Property Name="DietId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="KgLost" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="DifficultyLevel" Type="int" />
+    <Property Name="EnabledBy" Type="int" Nullable="false" />
+    <Property Name="CaloriesPerDay" Type="decimal" Precision="8" Scale="3" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ContainerId" Type="int" />
+    <Property Name="ProductTypeId" Type="int" Nullable="false" />
+    <Property Name="ProductImage" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ProductTypeId" />
+    </Key>
+    <Property Name="ProductTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
+  </EntityType>
+  <EntityType Name="UserDiets">
+    <Key>
+      <PropertyRef Name="UserDietsId" />
+    </Key>
+    <Property Name="UserDietsId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DietId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProducts">
+    <Key>
+      <PropertyRef Name="UserProductsId" />
+    </Key>
+    <Property Name="UserProductsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Diet_User_EnabledBy">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Diet" Type="Self.Diet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Diet">
+        <PropertyRef Name="EnabledBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Container_ContainerId">
+    <End Role="Container" Type="Self.Container" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Container">
+        <PropertyRef Name="ContainerId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ContainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType_ProductTypeId">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ProductTypeId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDiets_Diet_DietId">
+    <End Role="Diet" Type="Self.Diet" Multiplicity="1" />
+    <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diet">
+        <PropertyRef Name="DietId" />
+      </Principal>
+      <Dependent Role="UserDiets">
+        <PropertyRef Name="DietId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDiets_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserDiets">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProducts_Product_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="UserProducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProducts_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Container" EntityType="Self.Container" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diet" EntityType="Self.Diet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDiets" EntityType="Self.UserDiets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProducts" EntityType="Self.UserProducts" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Diet_User_EnabledBy" Association="Self.FK_Diet_User_EnabledBy">
+      <End Role="User" EntitySet="User" />
+      <End Role="Diet" EntitySet="Diet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Container_ContainerId" Association="Self.FK_Product_Container_ContainerId">
+      <End Role="Container" EntitySet="Container" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType_ProductTypeId" Association="Self.FK_Product_ProductType_ProductTypeId">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDiets_Diet_DietId" Association="Self.FK_UserDiets_Diet_DietId">
+      <End Role="Diet" EntitySet="Diet" />
+      <End Role="UserDiets" EntitySet="UserDiets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDiets_User_UserId" Association="Self.FK_UserDiets_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserDiets" EntitySet="UserDiets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProducts_Product_ProductId" Association="Self.FK_UserProducts_Product_ProductId">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="UserProducts" EntitySet="UserProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProducts_User_UserId" Association="Self.FK_UserProducts_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserProducts" EntitySet="UserProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
