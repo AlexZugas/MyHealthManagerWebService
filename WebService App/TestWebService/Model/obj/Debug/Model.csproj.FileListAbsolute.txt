@@ -16,6 +16,7 @@ F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\bin\Debug\EntityFramework.SqlServer.dll
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\bin\Debug\EntityFramework.xml
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\obj\Debug\Model.Properties.Resources.resources
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\obj\Debug\Model.csproj.GenerateResource.Cache
 F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\Model\obj\Debug\Model.dll
