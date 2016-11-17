@@ -36,17 +36,6 @@
     <Property Name="ProductTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="SecondName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
-  </EntityType>
   <EntityType Name="UserDiets">
     <Key>
       <PropertyRef Name="UserDietsId" />
@@ -63,11 +52,23 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="TotalSugar" Type="decimal" Precision="4" Scale="2" />
+  </EntityType>
   <Association Name="FK_Diet_User_EnabledBy">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Diet" Type="Self.Diet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="User">
+      <Principal Role="Users">
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Diet">
@@ -112,10 +113,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserDiets_User_UserId">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="User">
+      <Principal Role="Users">
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="UserDiets">
@@ -136,10 +137,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserProducts_User_UserId">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="User">
+      <Principal Role="Users">
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="UserProducts">
@@ -152,11 +153,11 @@
     <EntitySet Name="Diet" EntityType="Self.Diet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserDiets" EntityType="Self.UserDiets" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserProducts" EntityType="Self.UserProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Diet_User_EnabledBy" Association="Self.FK_Diet_User_EnabledBy">
-      <End Role="User" EntitySet="User" />
+      <End Role="Users" EntitySet="Users" />
       <End Role="Diet" EntitySet="Diet" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_Container_ContainerId" Association="Self.FK_Product_Container_ContainerId">
@@ -172,7 +173,7 @@
       <End Role="UserDiets" EntitySet="UserDiets" />
     </AssociationSet>
     <AssociationSet Name="FK_UserDiets_User_UserId" Association="Self.FK_UserDiets_User_UserId">
-      <End Role="User" EntitySet="User" />
+      <End Role="Users" EntitySet="Users" />
       <End Role="UserDiets" EntitySet="UserDiets" />
     </AssociationSet>
     <AssociationSet Name="FK_UserProducts_Product_ProductId" Association="Self.FK_UserProducts_Product_ProductId">
@@ -180,7 +181,7 @@
       <End Role="UserProducts" EntitySet="UserProducts" />
     </AssociationSet>
     <AssociationSet Name="FK_UserProducts_User_UserId" Association="Self.FK_UserProducts_User_UserId">
-      <End Role="User" EntitySet="User" />
+      <End Role="Users" EntitySet="Users" />
       <End Role="UserProducts" EntitySet="UserProducts" />
     </AssociationSet>
   </EntityContainer>

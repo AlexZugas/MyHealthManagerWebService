@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer.Users;
+using DataAccessLayer.UsersRepo;
 using Model;
 
-namespace BusinessLogicLayer.Users
+namespace BusinessLogicLayer.UsersLogic
 {
     public class UserLogic
     {
@@ -17,7 +17,7 @@ namespace BusinessLogicLayer.Users
             return _userRepository.get_UserInfoCatalog().ToList();
         }
 
-        public User get_UserInfo()
+        public Users get_UserInfo()
         {
             return _userRepository.get_UserInfo();
         }

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Alex\Documents\Visual Studio 2015\Projects\TestWebService\DataAccessLayer\Infraestructura.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\MyHealthManagerWebService_Repository\MyHealthManagerWebService\WebService App\TestWebService\DataAccessLayer\Infraestructura.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

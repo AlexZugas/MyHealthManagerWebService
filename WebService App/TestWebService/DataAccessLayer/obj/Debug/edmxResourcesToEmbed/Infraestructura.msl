@@ -4,70 +4,71 @@
     <EntitySetMapping Name="Container">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.Container">
         <MappingFragment StoreEntitySet="Container">
-          <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Diet">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.Diet">
         <MappingFragment StoreEntitySet="Diet">
-          <ScalarProperty Name="DietId" ColumnName="DietId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Duration" ColumnName="Duration" />
-          <ScalarProperty Name="KgLost" ColumnName="KgLost" />
-          <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
-          <ScalarProperty Name="EnabledBy" ColumnName="EnabledBy" />
           <ScalarProperty Name="CaloriesPerDay" ColumnName="CaloriesPerDay" />
+          <ScalarProperty Name="EnabledBy" ColumnName="EnabledBy" />
+          <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+          <ScalarProperty Name="KgLost" ColumnName="KgLost" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DietId" ColumnName="DietId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.Product">
         <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
-          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
           <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductType">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.ProductType">
         <MappingFragment StoreEntitySet="ProductType">
-          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="MyHealthManagerEntities.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserDiets">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.UserDiets">
         <MappingFragment StoreEntitySet="UserDiets">
-          <ScalarProperty Name="UserDietsId" ColumnName="UserDietsId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="DietId" ColumnName="DietId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserDietsId" ColumnName="UserDietsId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserProducts">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.UserProducts">
         <MappingFragment StoreEntitySet="UserProducts">
-          <ScalarProperty Name="UserProductsId" ColumnName="UserProductsId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserProductsId" ColumnName="UserProductsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MyHealthManagerEntities.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="TotalSugar" ColumnName="TotalSugar" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

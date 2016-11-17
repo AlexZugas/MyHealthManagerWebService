@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-using BusinessLogicLayer.Users;
+using BusinessLogicLayer.UsersLogic;
 using System.Data;
+using Model;
+using System.Web.Script.Serialization;
 
 /// <summary>
 /// Summary description for CalculatorWebService
@@ -34,6 +36,15 @@ public class CalculatorWebService : System.Web.Services.WebService
     {
         UserLogic UserBLL = new UserLogic();
         return UserBLL.get_UserInfo().UserName;
+    }
+
+    [WebMethod]
+    public string get_UserObject()
+    {
+        UserLogic UserBLL = new UserLogic();
+        Users usuario = UserBLL.get_UserInfo();
+        var jsonUsuario = new JavaScriptSerializer().Serialize(usuario);
+        return jsonUsuario;
     }
 
     private DataTable ToDataTable<T>(T entity) where T : class

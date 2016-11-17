@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using Model;
 
-namespace DataAccessLayer.Users
+namespace DataAccessLayer.UsersRepo
 {
     public class UserRepository : IUserRepository
     {
@@ -30,7 +30,7 @@ namespace DataAccessLayer.Users
                 return users.AsEnumerable();
         }
 
-        public User get_UserInfo()
+        public Users get_UserInfo()
         {
             return (from tUser in Context.Users select tUser).FirstOrDefault();
         }

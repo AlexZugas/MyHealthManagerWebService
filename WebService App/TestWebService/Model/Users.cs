@@ -12,10 +12,10 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Users()
         {
             this.Diet = new HashSet<Diet>();
             this.UserDiets = new HashSet<UserDiets>();
@@ -28,6 +28,7 @@ namespace Model
         public string SecondName { get; set; }
         public string LastName { get; set; }
         public Nullable<decimal> Weight { get; set; }
+        public Nullable<decimal> TotalSugar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Diet> Diet { get; set; }

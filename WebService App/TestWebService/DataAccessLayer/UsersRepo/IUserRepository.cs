@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using Model;
 
-namespace DataAccessLayer.Users
+namespace DataAccessLayer.UsersRepo
 {
     public interface IUserRepository
     {
         IEnumerable<object> get_UserInfoCatalog();
 
-        User get_UserInfo();
+        Users get_UserInfo();
     }
 }

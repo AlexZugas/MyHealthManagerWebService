@@ -19,6 +19,6 @@ namespace Model
         public int DietId { get; set; }
     
         public virtual Diet Diet { get; set; }
-        public virtual User User { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

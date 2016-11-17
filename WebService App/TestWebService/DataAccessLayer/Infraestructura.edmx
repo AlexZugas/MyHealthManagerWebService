@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Container">
           <Key>
             <PropertyRef Name="ContainerId" />
@@ -41,17 +41,6 @@
           <Property Name="ProductTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="SecondName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
-        </EntityType>
         <EntityType Name="UserDiets">
           <Key>
             <PropertyRef Name="UserDietsId" />
@@ -68,11 +57,23 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SecondName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
+          <Property Name="TotalSugar" Type="decimal" Precision="4" Scale="2" />
+        </EntityType>
         <Association Name="FK_Diet_User_EnabledBy">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Diet" Type="Self.Diet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Diet">
@@ -117,10 +118,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserDiets_User_UserId">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserDiets">
@@ -141,10 +142,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProducts_User_UserId">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserProducts">
@@ -157,11 +158,11 @@
           <EntitySet Name="Diet" EntityType="Self.Diet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDiets" EntityType="Self.UserDiets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProducts" EntityType="Self.UserProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Diet_User_EnabledBy" Association="Self.FK_Diet_User_EnabledBy">
-            <End Role="User" EntitySet="User" />
+            <End Role="Users" EntitySet="Users" />
             <End Role="Diet" EntitySet="Diet" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Container_ContainerId" Association="Self.FK_Product_Container_ContainerId">
@@ -177,7 +178,7 @@
             <End Role="UserDiets" EntitySet="UserDiets" />
           </AssociationSet>
           <AssociationSet Name="FK_UserDiets_User_UserId" Association="Self.FK_UserDiets_User_UserId">
-            <End Role="User" EntitySet="User" />
+            <End Role="Users" EntitySet="Users" />
             <End Role="UserDiets" EntitySet="UserDiets" />
           </AssociationSet>
           <AssociationSet Name="FK_UserProducts_Product_ProductId" Association="Self.FK_UserProducts_Product_ProductId">
@@ -185,71 +186,93 @@
             <End Role="UserProducts" EntitySet="UserProducts" />
           </AssociationSet>
           <AssociationSet Name="FK_UserProducts_User_UserId" Association="Self.FK_UserProducts_User_UserId">
-            <End Role="User" EntitySet="User" />
+            <End Role="Users" EntitySet="Users" />
             <End Role="UserProducts" EntitySet="UserProducts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyHealthManagerEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Container" EntityType="MyHealthManagerEntities.Container" />
+          <EntitySet Name="Diet" EntityType="MyHealthManagerEntities.Diet" />
+          <EntitySet Name="Product" EntityType="MyHealthManagerEntities.Product" />
+          <EntitySet Name="ProductType" EntityType="MyHealthManagerEntities.ProductType" />
+          <EntitySet Name="UserDiets" EntityType="MyHealthManagerEntities.UserDiets" />
+          <EntitySet Name="UserProducts" EntityType="MyHealthManagerEntities.UserProducts" />
+          <EntitySet Name="Users" EntityType="MyHealthManagerEntities.Users" />
+          <AssociationSet Name="FK_Product_Container_ContainerId" Association="MyHealthManagerEntities.FK_Product_Container_ContainerId">
+            <End Role="Container" EntitySet="Container" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diet_User_EnabledBy" Association="MyHealthManagerEntities.FK_Diet_User_EnabledBy">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Diet" EntitySet="Diet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDiets_Diet_DietId" Association="MyHealthManagerEntities.FK_UserDiets_Diet_DietId">
+            <End Role="Diet" EntitySet="Diet" />
+            <End Role="UserDiets" EntitySet="UserDiets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType_ProductTypeId" Association="MyHealthManagerEntities.FK_Product_ProductType_ProductTypeId">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProducts_Product_ProductId" Association="MyHealthManagerEntities.FK_UserProducts_Product_ProductId">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="UserProducts" EntitySet="UserProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDiets_User_UserId" Association="MyHealthManagerEntities.FK_UserDiets_User_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserDiets" EntitySet="UserDiets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProducts_User_UserId" Association="MyHealthManagerEntities.FK_UserProducts_User_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProducts" EntitySet="UserProducts" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Container">
           <Key>
             <PropertyRef Name="ContainerId" />
           </Key>
           <Property Name="ContainerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Container_ContainerId" FromRole="Container" ToRole="Product" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="MyHealthManagerEntities.FK_Product_Container_ContainerId" FromRole="Container" ToRole="Product" />
         </EntityType>
         <EntityType Name="Diet">
           <Key>
             <PropertyRef Name="DietId" />
           </Key>
           <Property Name="DietId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Duration" Type="Int32" />
           <Property Name="KgLost" Type="Decimal" Precision="8" Scale="3" />
           <Property Name="DifficultyLevel" Type="Int32" />
           <Property Name="EnabledBy" Type="Int32" Nullable="false" />
           <Property Name="CaloriesPerDay" Type="Decimal" Precision="8" Scale="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Diet_User_EnabledBy" FromRole="Diet" ToRole="User" />
-          <NavigationProperty Name="UserDiets" Relationship="Self.FK_UserDiets_Diet_DietId" FromRole="Diet" ToRole="UserDiets" />
+          <NavigationProperty Name="Users" Relationship="MyHealthManagerEntities.FK_Diet_User_EnabledBy" FromRole="Diet" ToRole="Users" />
+          <NavigationProperty Name="UserDiets" Relationship="MyHealthManagerEntities.FK_UserDiets_Diet_DietId" FromRole="Diet" ToRole="UserDiets" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ContainerId" Type="Int32" />
           <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
           <Property Name="ProductImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Container" Relationship="Self.FK_Product_Container_ContainerId" FromRole="Product" ToRole="Container" />
-          <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType_ProductTypeId" FromRole="Product" ToRole="ProductType" />
-          <NavigationProperty Name="UserProducts" Relationship="Self.FK_UserProducts_Product_ProductId" FromRole="Product" ToRole="UserProducts" />
+          <NavigationProperty Name="Container" Relationship="MyHealthManagerEntities.FK_Product_Container_ContainerId" FromRole="Product" ToRole="Container" />
+          <NavigationProperty Name="ProductType" Relationship="MyHealthManagerEntities.FK_Product_ProductType_ProductTypeId" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="UserProducts" Relationship="MyHealthManagerEntities.FK_UserProducts_Product_ProductId" FromRole="Product" ToRole="UserProducts" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
             <PropertyRef Name="ProductTypeId" />
           </Key>
           <Property Name="ProductTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductType_ProductTypeId" FromRole="ProductType" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SecondName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Weight" Type="Decimal" Precision="7" Scale="3" />
-          <NavigationProperty Name="Diet" Relationship="Self.FK_Diet_User_EnabledBy" FromRole="User" ToRole="Diet" />
-          <NavigationProperty Name="UserDiets" Relationship="Self.FK_UserDiets_User_UserId" FromRole="User" ToRole="UserDiets" />
-          <NavigationProperty Name="UserProducts" Relationship="Self.FK_UserProducts_User_UserId" FromRole="User" ToRole="UserProducts" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="MyHealthManagerEntities.FK_Product_ProductType_ProductTypeId" FromRole="ProductType" ToRole="Product" />
         </EntityType>
         <EntityType Name="UserDiets">
           <Key>
@@ -258,8 +281,8 @@
           <Property Name="UserDietsId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="DietId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Diet" Relationship="Self.FK_UserDiets_Diet_DietId" FromRole="UserDiets" ToRole="Diet" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserDiets_User_UserId" FromRole="UserDiets" ToRole="User" />
+          <NavigationProperty Name="Diet" Relationship="MyHealthManagerEntities.FK_UserDiets_Diet_DietId" FromRole="UserDiets" ToRole="Diet" />
+          <NavigationProperty Name="Users" Relationship="MyHealthManagerEntities.FK_UserDiets_User_UserId" FromRole="UserDiets" ToRole="Users" />
         </EntityType>
         <EntityType Name="UserProducts">
           <Key>
@@ -268,12 +291,27 @@
           <Property Name="UserProductsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_UserProducts_Product_ProductId" FromRole="UserProducts" ToRole="Product" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserProducts_User_UserId" FromRole="UserProducts" ToRole="User" />
+          <NavigationProperty Name="Product" Relationship="MyHealthManagerEntities.FK_UserProducts_Product_ProductId" FromRole="UserProducts" ToRole="Product" />
+          <NavigationProperty Name="Users" Relationship="MyHealthManagerEntities.FK_UserProducts_User_UserId" FromRole="UserProducts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Decimal" Precision="7" Scale="3" />
+          <Property Name="TotalSugar" Type="Decimal" Precision="4" Scale="2" />
+          <NavigationProperty Name="Diet" Relationship="MyHealthManagerEntities.FK_Diet_User_EnabledBy" FromRole="Users" ToRole="Diet" />
+          <NavigationProperty Name="UserDiets" Relationship="MyHealthManagerEntities.FK_UserDiets_User_UserId" FromRole="Users" ToRole="UserDiets" />
+          <NavigationProperty Name="UserProducts" Relationship="MyHealthManagerEntities.FK_UserProducts_User_UserId" FromRole="Users" ToRole="UserProducts" />
         </EntityType>
         <Association Name="FK_Product_Container_ContainerId">
-          <End Role="Container" Type="Self.Container" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Container" Role="Container" Multiplicity="0..1" />
+          <End Type="MyHealthManagerEntities.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Container">
               <PropertyRef Name="ContainerId" />
@@ -284,10 +322,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Diet_User_EnabledBy">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Diet" Type="Self.Diet" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Users" Role="Users" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.Diet" Role="Diet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Diet">
@@ -296,8 +334,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserDiets_Diet_DietId">
-          <End Role="Diet" Type="Self.Diet" Multiplicity="1" />
-          <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Diet" Role="Diet" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.UserDiets" Role="UserDiets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Diet">
               <PropertyRef Name="DietId" />
@@ -308,8 +346,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_ProductType_ProductTypeId">
-          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.ProductType" Role="ProductType" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProductType">
               <PropertyRef Name="ProductTypeId" />
@@ -320,8 +358,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProducts_Product_ProductId">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Product" Role="Product" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.UserProducts" Role="UserProducts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -332,10 +370,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserDiets_User_UserId">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserDiets" Type="Self.UserDiets" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Users" Role="Users" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.UserDiets" Role="UserDiets" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserDiets">
@@ -344,10 +382,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProducts_User_UserId">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserProducts" Type="Self.UserProducts" Multiplicity="*" />
+          <End Type="MyHealthManagerEntities.Users" Role="Users" Multiplicity="1" />
+          <End Type="MyHealthManagerEntities.UserProducts" Role="UserProducts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserProducts">
@@ -355,44 +393,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Container" EntityType="Self.Container" />
-          <EntitySet Name="Diet" EntityType="Self.Diet" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductType" EntityType="Self.ProductType" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserDiets" EntityType="Self.UserDiets" />
-          <EntitySet Name="UserProducts" EntityType="Self.UserProducts" />
-          <AssociationSet Name="FK_Product_Container_ContainerId" Association="Self.FK_Product_Container_ContainerId">
-            <End Role="Container" EntitySet="Container" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Diet_User_EnabledBy" Association="Self.FK_Diet_User_EnabledBy">
-            <End Role="User" EntitySet="User" />
-            <End Role="Diet" EntitySet="Diet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserDiets_Diet_DietId" Association="Self.FK_UserDiets_Diet_DietId">
-            <End Role="Diet" EntitySet="Diet" />
-            <End Role="UserDiets" EntitySet="UserDiets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductType_ProductTypeId" Association="Self.FK_Product_ProductType_ProductTypeId">
-            <End Role="ProductType" EntitySet="ProductType" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProducts_Product_ProductId" Association="Self.FK_UserProducts_Product_ProductId">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="UserProducts" EntitySet="UserProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserDiets_User_UserId" Association="Self.FK_UserDiets_User_UserId">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserDiets" EntitySet="UserDiets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProducts_User_UserId" Association="Self.FK_UserProducts_User_UserId">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserProducts" EntitySet="UserProducts" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -401,70 +402,71 @@
           <EntitySetMapping Name="Container">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.Container">
               <MappingFragment StoreEntitySet="Container">
-                <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Diet">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.Diet">
               <MappingFragment StoreEntitySet="Diet">
-                <ScalarProperty Name="DietId" ColumnName="DietId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="KgLost" ColumnName="KgLost" />
-                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
-                <ScalarProperty Name="EnabledBy" ColumnName="EnabledBy" />
                 <ScalarProperty Name="CaloriesPerDay" ColumnName="CaloriesPerDay" />
+                <ScalarProperty Name="EnabledBy" ColumnName="EnabledBy" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="KgLost" ColumnName="KgLost" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DietId" ColumnName="DietId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
-                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
                 <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductType">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
-                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="MyHealthManagerEntities.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserDiets">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.UserDiets">
               <MappingFragment StoreEntitySet="UserDiets">
-                <ScalarProperty Name="UserDietsId" ColumnName="UserDietsId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="DietId" ColumnName="DietId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserDietsId" ColumnName="UserDietsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProducts">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.UserProducts">
               <MappingFragment StoreEntitySet="UserProducts">
-                <ScalarProperty Name="UserProductsId" ColumnName="UserProductsId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserProductsId" ColumnName="UserProductsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MyHealthManagerEntities.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TotalSugar" ColumnName="TotalSugar" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
