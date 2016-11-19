@@ -68,6 +68,9 @@
           <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
           <Property Name="TotalSugar" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="TotalFat" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="TotalSaturatedFat" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="TotalSodium" Type="decimal" Precision="4" Scale="2" />
         </EntityType>
         <Association Name="FK_Diet_User_EnabledBy">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -305,6 +308,9 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Weight" Type="Decimal" Precision="7" Scale="3" />
           <Property Name="TotalSugar" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="TotalFat" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="TotalSaturatedFat" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="TotalSodium" Type="Decimal" Precision="4" Scale="2" />
           <NavigationProperty Name="Diet" Relationship="MyHealthManagerEntities.FK_Diet_User_EnabledBy" FromRole="Users" ToRole="Diet" />
           <NavigationProperty Name="UserDiets" Relationship="MyHealthManagerEntities.FK_UserDiets_User_UserId" FromRole="Users" ToRole="UserDiets" />
           <NavigationProperty Name="UserProducts" Relationship="MyHealthManagerEntities.FK_UserProducts_User_UserId" FromRole="Users" ToRole="UserProducts" />
@@ -460,6 +466,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MyHealthManagerEntities.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TotalSodium" ColumnName="TotalSodium" />
+                <ScalarProperty Name="TotalSaturatedFat" ColumnName="TotalSaturatedFat" />
+                <ScalarProperty Name="TotalFat" ColumnName="TotalFat" />
                 <ScalarProperty Name="TotalSugar" ColumnName="TotalSugar" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

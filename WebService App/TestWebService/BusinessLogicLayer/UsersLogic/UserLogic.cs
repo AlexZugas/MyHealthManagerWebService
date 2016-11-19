@@ -21,5 +21,10 @@ namespace BusinessLogicLayer.UsersLogic
         {
             return _userRepository.get_UserInfo();
         }
+
+        public object get_UserHealthInfo(int userId)
+        {
+            return _userRepository.get_UserHealthInfo(userId);
+        }
     }
 }

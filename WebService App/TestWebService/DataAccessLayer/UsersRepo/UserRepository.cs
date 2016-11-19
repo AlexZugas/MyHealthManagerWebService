@@ -34,5 +34,18 @@ namespace DataAccessLayer.UsersRepo
         {
             return (from tUser in Context.Users select tUser).FirstOrDefault();
         }
+
+        public object get_UserHealthInfo(int userId)
+        {
+            var userInfo = from tUser in Context.Users
+                           select new
+                           {
+                               totalSugar = tUser.TotalSugar,
+                               totalFat = tUser.TotalFat,
+                               totalSaturatedFat = tUser.TotalSaturatedFat,
+                               totalSodium = tUser.TotalSodium
+                           };
+            return userInfo.FirstOrDefault();
+        }
     }
 }

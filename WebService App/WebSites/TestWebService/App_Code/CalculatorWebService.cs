@@ -47,6 +47,15 @@ public class CalculatorWebService : System.Web.Services.WebService
         return jsonUsuario;
     }
 
+    [WebMethod]
+    public string get_UserHealthInfo(int userId)
+    {
+        UserLogic UserBLL = new UserLogic();
+        object healthInfo = UserBLL.get_UserHealthInfo(userId);
+        var jsonUsuario = new JavaScriptSerializer().Serialize(healthInfo);
+        return jsonUsuario;
+    }
+
     private DataTable ToDataTable<T>(T entity) where T : class
     {
         var properties = typeof(T).GetProperties();

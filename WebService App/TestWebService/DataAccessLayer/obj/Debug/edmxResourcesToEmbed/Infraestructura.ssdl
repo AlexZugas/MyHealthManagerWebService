@@ -63,6 +63,9 @@
     <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Weight" Type="decimal" Precision="7" Scale="3" />
     <Property Name="TotalSugar" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="TotalFat" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="TotalSaturatedFat" Type="decimal" Precision="4" Scale="2" />
+    <Property Name="TotalSodium" Type="decimal" Precision="4" Scale="2" />
   </EntityType>
   <Association Name="FK_Diet_User_EnabledBy">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />

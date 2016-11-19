@@ -29,6 +29,9 @@ namespace Model
         public string LastName { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public Nullable<decimal> TotalSugar { get; set; }
+        public Nullable<decimal> TotalFat { get; set; }
+        public Nullable<decimal> TotalSaturatedFat { get; set; }
+        public Nullable<decimal> TotalSodium { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Diet> Diet { get; set; }

@@ -13,5 +13,7 @@ namespace DataAccessLayer.UsersRepo
         IEnumerable<object> get_UserInfoCatalog();
 
         Users get_UserInfo();
+
+        object get_UserHealthInfo(int userId);
     }
 }

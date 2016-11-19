@@ -62,6 +62,9 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="MyHealthManagerEntities.Users">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="TotalSodium" ColumnName="TotalSodium" />
+          <ScalarProperty Name="TotalSaturatedFat" ColumnName="TotalSaturatedFat" />
+          <ScalarProperty Name="TotalFat" ColumnName="TotalFat" />
           <ScalarProperty Name="TotalSugar" ColumnName="TotalSugar" />
           <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
